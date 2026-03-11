@@ -23,7 +23,7 @@ function AddProduct() {
   const handleSubmit = async (e)=>{
     e.preventDefault();
 
-    const res = await fetch("product-revies-app-api.vercel.app/products",{
+    const res = await fetch("https://product-revies-app-api.vercel.app/products",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
