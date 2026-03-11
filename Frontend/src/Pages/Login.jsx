@@ -25,7 +25,7 @@ function Login() {
             return handleSuccess('email and password required')
         }
         try {
-            const url='product-revies-app-api.vercel.app/auth/login';
+            const url='https://product-revies-app-api.vercel.app/auth/login';
             const resopnse=await fetch(url,{
                 method:"POST",
                 headers:{'Content-Type':'application/json'},
