@@ -1,9 +1,8 @@
-
-
-
+/* PRODUCT CARD */
 
 .product-card {
-  width: 280px;
+  flex: 1 1 260px;   /* important for responsive wrapping */
+  max-width: 280px;
   background: white;
   border-radius: 12px;
   overflow: hidden;
@@ -58,36 +57,35 @@
 .view-btn:hover {
   background: #6a0dad;
 }
+
+/* PRODUCTS CONTAINER */
+
 .products-container {
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
   padding: 40px;
 }
 
-
-
-
-
-
-
-
+/* DETAILS PAGE */
 
 .details-container {
+  width: 100%;
   max-width: 1000px;
   margin: auto;
   padding: 40px;
 }
 
-/* PRODUCT AREA */
+/* MAIN CONTENT */
+
 .Maincontaint{
   position: relative;
   min-height: 100%;
 }
 
+/* NAVBAR */
 
-/*for home nav bar*/
 .navbar{
   width:100%;
   display:flex;
@@ -97,11 +95,10 @@
   background:linear-gradient(90deg,#6a11cb,#8e44ad);
   color:white;
   box-shadow:0 3px 10px rgba(0,0,0,0.2);
-}
-.navbar{
   position:sticky;
   top:0;
   z-index:1000;
+  flex-wrap: wrap;
 }
 
 .user-name{
@@ -124,4 +121,77 @@
   background-color: #6a11cb;
   color: white;
   border: 1px solid white;
+}
+
+/* ---------------- TABLET ---------------- */
+
+@media (max-width: 900px){
+
+  .products-container{
+    padding:30px;
+    gap:18px;
+  }
+
+  .product-card{
+    flex: 1 1 45%;
+    max-width: 45%;
+  }
+
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media (max-width: 600px){
+
+  .products-container{
+    padding:20px;
+    gap:15px;
+  }
+
+  .product-card{
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .product-title{
+    font-size:18px;
+  }
+
+  .product-desc{
+    height:auto;
+  }
+
+  .details-container{
+    padding:20px;
+  }
+
+  .navbar{
+    padding:12px 15px;
+  }
+
+  .user-name{
+    font-size:18px;
+  }
+
+  .logout-btn{
+    font-size:14px;
+    padding:6px 14px;
+  }
+
+}
+
+/* ---------------- SMALL PHONES ---------------- */
+
+@media (max-width:400px){
+
+  .navbar{
+    flex-direction: column;
+    gap:8px;
+    text-align:center;
+  }
+
+  .products-container{
+    padding:15px;
+  }
+
 }

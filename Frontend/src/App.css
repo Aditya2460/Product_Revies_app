@@ -9,7 +9,11 @@
 
 body{
   background:#f5f5f7;
+  width:100%;
+  overflow-x:hidden;
 }
+
+/* ---------- NAVBAR ---------- */
 
 /* ---------- NAVBAR ---------- */
 
@@ -22,8 +26,6 @@ body{
   background:linear-gradient(90deg,#6a11cb,#8e44ad);
   color:white;
   box-shadow:0 3px 10px rgba(0,0,0,0.2);
-}
-.navbar{
   position:sticky;
   top:0;
   z-index:1000;
@@ -33,6 +35,15 @@ body{
   font-size:20px;
   font-weight:600;
 }
+
+/* NAV BUTTON CONTAINER */
+
+.nav-links{
+  display:flex;
+  gap:10px;
+}
+
+/* BUTTON */
 
 .logout-btn{
   background:white;
@@ -49,6 +60,22 @@ body{
   background:#6a11cb;
   color:white;
   border:1px solid white;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:white;
+  margin:4px 0;
+  transition:0.3s;
 }
 
 /* ---------- MAIN CONTAINER ---------- */
@@ -73,8 +100,13 @@ body{
 .details-image{
   width:100%;
   max-width:500px;
+  height:auto;
   border-radius:10px;
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.product-details{
+  width:100%;
 }
 
 .product-details h2{
@@ -97,6 +129,7 @@ body{
 
 .review-section{
   margin-top:40px;
+  width:100%;
 }
 
 .review-section h2{
@@ -121,6 +154,7 @@ body{
 
 .add-review{
   margin-top:30px;
+  width:100%;
 }
 
 .add-review textarea{
@@ -157,11 +191,17 @@ body{
 
   .product-section{
     grid-template-columns:1fr;
+    gap:25px;
     text-align:center;
   }
 
   .details-image{
     margin:auto;
+    max-width:80%;
+  }
+
+  .product-details{
+    padding:0 10px;
   }
 
 }
@@ -170,18 +210,32 @@ body{
 
 @media (max-width:600px){
 
-  .navbar{
-    padding:12px 15px;
+  /* ---------- MOBILE NAVBAR ---------- */
+
+@media (max-width:768px){
+
+  .hamburger{
+    display:flex;
   }
 
-  .user-name{
-    font-size:18px;
+  .nav-links{
+    position:absolute;
+    top:70px;
+    right:0;
+    background:#6a11cb;
+    flex-direction:column;
+    width:200px;
+    padding:20px;
+    gap:15px;
+    transform:translateX(100%);
+    transition:0.3s ease;
   }
 
-  .logout-btn{
-    padding:6px 14px;
-    font-size:14px;
+  .nav-links.active{
+    transform:translateX(0);
   }
+
+}
 
   .details-container{
     padding:15px;
@@ -199,11 +253,21 @@ body{
     padding:12px;
   }
 
+  .details-image{
+    max-width:100%;
+  }
+
 }
 
 /* ---------- SMALL PHONES ---------- */
 
 @media (max-width:400px){
+
+  .navbar{
+    flex-direction:column;
+    gap:8px;
+    text-align:center;
+  }
 
   .product-details h2{
     font-size:20px;
@@ -219,8 +283,8 @@ body{
 
 }
 
+/* ---------- ADD PRODUCT PAGE ---------- */
 
-/* For the Add Peoduct page */
 .form-container{
   width:100%;
   max-width:500px;
@@ -245,6 +309,7 @@ body{
 
 .product-form input,
 .product-form textarea{
+  width:100%;
   padding:10px;
   border-radius:6px;
   border:1px solid #ccc;
@@ -268,4 +333,15 @@ body{
 
 .product-form button:hover{
   background:#4e0fa3;
+}
+
+/* Mobile form */
+
+@media (max-width:500px){
+
+  .form-container{
+    margin:30px 15px;
+    padding:20px;
+  }
+
 }
