@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import '../App.css'
 import { useNavigate, useParams } from "react-router-dom";
 import Footer from "./Footer";
+import Loading from "./Loading";
 function ProductDetails() {
 
   const { id } = useParams();
@@ -81,7 +82,7 @@ const name = localStorage.getItem("logedInUser");
   setReviewText("");
 };
 if(loading){
-  return <h2>Loading product...</h2>;
+  return <Loading />;
 }else{
   return (<>
     
