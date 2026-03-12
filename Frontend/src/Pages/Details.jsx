@@ -81,83 +81,86 @@ const name = localStorage.getItem("logedInUser");
 
   setReviewText("");
 };
-if(loading){
-  return <Loading />;
-}else{
-  return (<>
-    
 
+ return (
+  <>
     <div className="details-container">
-      
-     <div className="navbar">
-  <h2 className="user-name">{name || "Guest"}</h2>
 
-  <button className="logout-btn" onClick={handleBack}>
-    Back
-  </button>
-</div>
-      {/* PRODUCT SECTION */}
-      <div className="product-section">
-        
+      <div className="navbar">
+        <h2 className="user-name">{name || "Guest"}</h2>
 
-        <img
-          src={product.image}
-          alt={product.name}
-          className="details-image"
-        />
-
-        <div className="product-details">
-          <h2>{product.name}</h2>
-          <h3 className="price">₹{product.price}</h3>
-          <p>{product.description}</p>
-        </div>
-
+        <button className="logout-btn" onClick={handleBack}>
+          Back
+        </button>
       </div>
 
-      {/* REVIEWS */}
-      <div className="review-section">
-        <h2>Reviews</h2>
-{reviewsLoading ? (
-  <p>Loading reviews...</p>
-) : reviews.length === 0 ? (
-  <h3>No Reviews yet...</h3>
-) : (
-  reviews.map((rev) => (
-    <div key={rev._id} className="review-card">
-      <h4>{rev.user}</h4>
-      <p>{rev.comment}</p>
-    </div>
-  ))
-)}
-      </div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {/* PRODUCT SECTION */}
+          <div className="product-section">
 
-      {/* ADD REVIEW */}
-      {token && (
-        <div className="add-review">
-          <h3>Add Review</h3>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="details-image"
+            />
 
-          <textarea
-            placeholder="Write your review..."
-            value={reviewText}
-            onChange={(e) => setReviewText(e.target.value)}
-            
-          />
+            <div className="product-details">
+              <h2>{product.name}</h2>
+              <h3 className="price">₹{product.price}</h3>
+              <p>{product.description}</p>
+            </div>
 
-          <button onClick={(e)=>{handleReview(e)}}>Add Review</button>
-        </div>
+          </div>
+
+          {/* REVIEWS */}
+          <div className="review-section">
+            <h2>Reviews</h2>
+
+            {reviewsLoading ? (
+              <p>Loading reviews...</p>
+            ) : reviews.length === 0 ? (
+              <h3>No Reviews yet...</h3>
+            ) : (
+              reviews.map((rev) => (
+                <div key={rev._id} className="review-card">
+                  <h4>{rev.user}</h4>
+                  <p>{rev.comment}</p>
+                </div>
+              ))
+            )}
+          </div>
+
+          {/* ADD REVIEW */}
+          {token && (
+            <div className="add-review">
+              <h3>Add Review</h3>
+
+              <textarea
+                placeholder="Write your review..."
+                value={reviewText}
+                onChange={(e) => setReviewText(e.target.value)}
+              />
+
+              <button onClick={(e)=>{handleReview(e)}}>Add Review</button>
+            </div>
+          )}
+
+          {!token && (
+            <p className="login-msg">
+              Login to add review
+            </p>
+          )}
+        </>
       )}
 
-      {!token && (
-        <p className="login-msg">
-          Login to add review
-        </p>
-      )}
-
     </div>
-    <Footer/>
-    </>
-  );
-}
+
+    <Footer />
+  </>
+);
 }
 
 export default ProductDetails;
