@@ -31,7 +31,6 @@ const login=async(req,res)=>{
     try{
         const{email , password}=req.body;
         const user=await UserModel.findOne({email});
-        console.log("user in backend ", user,user.role);
         
         const errorMsg= "Auth failed Email or passward is wrong"
         if(!user){
