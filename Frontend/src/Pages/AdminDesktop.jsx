@@ -73,7 +73,7 @@ const handleViewDetail=(Product)=>{
     <div style={{ padding: "20px", display: "grid", gridTemplateColumns: "1fr 2fr", gap: "20px" }}>
       {/* Add Product Form */}
       <div style={{ border: "1px solid #ccc", padding: "15px", borderRadius: "10px" }}>
-        <h2>Add Product</h2>
+        <h2>Edit Product</h2>
         <input name="name" placeholder="Name" value={form.name} onChange={handleChange} /><br /><br />
         <input name="price" placeholder="Price" value={form.price} onChange={handleChange} /><br /><br />
         <input name="description" placeholder="Description" value={form.description} onChange={handleChange} /><br /><br />
