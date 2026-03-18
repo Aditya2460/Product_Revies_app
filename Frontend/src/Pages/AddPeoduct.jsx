@@ -43,8 +43,9 @@ function AddProduct() {
     });
   };
   const name=localStorage.getItem("logedInuser");
+  const role=localStorage.getItem("role");
   const handleBack=(e)=>{
-    Navigate("/home");
+    (role == "admin")? Navigate("/admin") :Navigate("/home");
   }
 
   return (

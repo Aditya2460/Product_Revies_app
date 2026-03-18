@@ -42,7 +42,7 @@ function Navbar() {
 
           <button className={`logout-btn ${role === "admin" ? "show" : "hide"} `} onClick={handleAddProduct}>
             Add Product
-          </button>
+          </button> 
 
           <button className="logout-btn" onClick={handleLogOut}>
             Logout
