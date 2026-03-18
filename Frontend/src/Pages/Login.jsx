@@ -32,13 +32,14 @@ function Login() {
                 body:JSON.stringify(loginInfo),
             })
             const result= await resopnse.json();
-            console.log(result);
-            const {success,message,jwttoken,name,error}=result;
+            console.log("result in ui section",result);
+            const {success,message,jwttoken,role,name,error}=result;
 
             if(success){
                 handleSuccess(message);
                 localStorage.setItem('token',jwttoken)
                 localStorage.setItem('logedInUser',name)
+                localStorage.setItem("role", role);
                 setTimeout(()=>{
                     navigate('/home');
                 },1000)

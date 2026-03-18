@@ -31,6 +31,8 @@ const login=async(req,res)=>{
     try{
         const{email , password}=req.body;
         const user=await UserModel.findOne({email});
+        console.log("user in backend ", user,user.role);
+        
         const errorMsg= "Auth failed Email or passward is wrong"
         if(!user){
             return res.status(403)
@@ -42,7 +44,11 @@ const login=async(req,res)=>{
             .json({message: errorMsg ,success:false})
         }
         const jwttoken=jwt.sign(
-            {email:user.email,_id:user._id},
+             { 
+                email: user.email,
+                _id: user._id,
+                role: user.role  
+                },
             process.env.JWT_SECRET,
             {expiresIn:'24h'}
         )
@@ -54,6 +60,7 @@ const login=async(req,res)=>{
                 success:true,
                 jwttoken,
                 email,
+                role:user.role,
                 name:user.name
             })
     }catch(error){
