@@ -18,6 +18,7 @@ function Navbar() {
     localStorage.removeItem('logedInUser')
     Navigate('/login')
   }
+  const role=localStorage.getItem("role");
 
   return (
     <div className="Maincontaint">
@@ -39,7 +40,7 @@ function Navbar() {
         {/* nav buttons */}
         <div className={`nav-links ${menuOpen ? "active" : ""}`}>
 
-          <button className="logout-btn" onClick={handleAddProduct}>
+          <button className={`logout-btn ${role === "admin" ? "show" : "hide"} `} onClick={handleAddProduct}>
             Add Product
           </button>
 
