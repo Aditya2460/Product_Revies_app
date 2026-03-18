@@ -41,7 +41,7 @@ function Login() {
                 localStorage.setItem('logedInUser',name)
                 localStorage.setItem("role", role);
                 setTimeout(()=>{
-                    navigate('/home');
+                  (role=="admin") ? navigate('/admin') : navigate('/home');
                 },1000)
             }else if(error){
                 const detail=error?.details[0].message;
