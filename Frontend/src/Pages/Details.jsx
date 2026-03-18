@@ -45,9 +45,10 @@ const fetchReviews = async () => {
 
 }, [id]);
 
+const role=localStorage.getItem("role")
 
 const handleBack=(e)=>{
-  navigate("/home")
+  (role == "admin")? navigate("/admin") :navigate("/home");
   
 }
 
