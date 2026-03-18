@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import Navbar from "./Navbar";
 function AdminDesktop() {
    
   const [products, setProducts] = useState([]);
@@ -10,9 +11,11 @@ function AdminDesktop() {
   const fetchProducts = async () => {
     const res = await fetch("http://localhost:8080/admin");
     const data = await res.json();
-    setProducts(data);
+    
+    setProducts(data.data);
   };
 
+    console.log("products at ui",products);
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -45,7 +48,8 @@ function AdminDesktop() {
     fetchProducts();
   };
 
-  return (
+  return (<>
+  <Navbar/>
     <div style={{ padding: "20px", display: "grid", gridTemplateColumns: "1fr 2fr", gap: "20px" }}>
       {/* Add Product Form */}
       <div style={{ border: "1px solid #ccc", padding: "15px", borderRadius: "10px" }}>
@@ -73,6 +77,7 @@ function AdminDesktop() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
