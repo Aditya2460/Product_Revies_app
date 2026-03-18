@@ -83,6 +83,31 @@ const name = localStorage.getItem("logedInUser");
   setReviewText("");
 };
 
+// Handling delete review functionality
+
+const handleDelete = async (id) => {
+  try {
+    const res = await fetch(
+      `https://product-revies-app.vercel.app/reviews/delete/${id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        }
+      }
+    );
+
+    const data = await res.json();
+
+    // refresh UI (important)
+    setReviews(prev => prev.filter(r => r._id !== id));
+
+  } catch (error) {
+    console.error("Delete failed:", error);
+  }
+};
+
  return (
   <>
     <div className="details-container">
@@ -117,22 +142,28 @@ const name = localStorage.getItem("logedInUser");
           </div>
 
           {/* REVIEWS */}
-          <div className="review-section">
-            <h2>Reviews</h2>
+         <div className="review-section">
+                    <h2>Reviews</h2>
 
-            {reviewsLoading ? (
-              <p>Loading reviews...</p>
-            ) : reviews.length === 0 ? (
-              <h3>No Reviews yet...</h3>
-            ) : (
-              reviews.map((rev) => (
-                <div key={rev._id} className="review-card">
-                  <h4>{rev.user}</h4>
-                  <p>{rev.comment}</p>
-                </div>
-              ))
-            )}
-          </div>
+                    {reviewsLoading ? (
+                      <p>Loading reviews...</p>
+                    ) : reviews.length === 0 ? (
+                      <h3>No Reviews yet...</h3>
+                    ) : (
+                      reviews.map((rev) => (
+                        <div key={rev._id} className="review-card">
+                          <h4>{rev.user}</h4>
+                          <p>{rev.comment}</p>
+
+                          {role === "admin" && (
+                            <button onClick={() => handleDelete(rev._id)}>
+                              Delete
+                            </button>
+                          )}
+                        </div>
+                      ))
+                    )}
+                  </div>
 
           {/* ADD REVIEW */}
           {token && (
