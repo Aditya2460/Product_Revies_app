@@ -20,7 +20,7 @@ function ProductDetails() {
   useEffect(() => {
 
   const fetchProduct = async () => {
-    const res = await fetch(`https://product-revies-app-api.vercel.app/products/${id}`);
+    const res = await fetch(`https://product-revies-app.vercel.app/products/${id}`);
     const data = await res.json();
     setProduct(data);
   setLoading(false);
@@ -28,7 +28,7 @@ function ProductDetails() {
 
 const fetchReviews = async () => {
   try {
-    const res = await fetch(`https://product-revies-app-api.vercel.app/reviews/${id}`);
+    const res = await fetch(`https://product-revies-app.vercel.app/reviews/${id}`);
     const data = await res.json();
 
 
@@ -67,7 +67,7 @@ const name = localStorage.getItem("logedInUser");
     comment: reviewText
   };
 
-  const res = await fetch("https://product-revies-app-api.vercel.app/reviews", {
+  const res = await fetch("https://product-revies-app.vercel.app/reviews", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

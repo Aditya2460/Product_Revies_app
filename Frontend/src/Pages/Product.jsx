@@ -18,7 +18,7 @@ function Products() {
     const fetchProducts = async () => {
       try {
 
-        const url = "https://product-revies-app-api.vercel.app/products";
+        const url = "https://product-revies-app.vercel.app/products";
         const token = localStorage.getItem("token");
 
         const response = await fetch(url, {

@@ -26,7 +26,7 @@ function Signup() {
             return handleSuccess('name, email and password required')
         }
         try {
-            const url='https://product-revies-app-api.vercel.app/auth/signup';
+            const url='https://product-revies-app.vercel.app/auth/signup';
             const resopnse=await fetch(url,{
                 method:"POST",
                 headers:{'Content-Type':'application/json'},

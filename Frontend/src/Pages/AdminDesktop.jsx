@@ -9,7 +9,7 @@ function AdminDesktop() {
   const token = localStorage.getItem("token");
 
   const fetchProducts = async () => {
-    const res = await fetch("http://localhost:8080/admin");
+    const res = await fetch("https://product-revies-app.vercel.app/admin");
     const data = await res.json();
     
     setProducts(data.data);
@@ -25,7 +25,7 @@ function AdminDesktop() {
   };
 
   const handleCreate = async () => {
-    await fetch("http://localhost:8080/admin/create", {
+    await fetch("https://product-revies-app.vercel.app/admin/create", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +39,7 @@ function AdminDesktop() {
   };
 
   const handleDelete = async (id) => {
-    await fetch(`http://localhost:8080/admin/${id}`, {
+    await fetch(`https://product-revies-app.vercel.app/admin/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`
