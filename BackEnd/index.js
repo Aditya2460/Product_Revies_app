@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/auth',AuthRouter)
 app.use("/products",productRoutes);
 app.use("/reviews",reviewRoutes);
-app.use("/admin",adminRoutes);
+app.use("/admin", adminRoutes);
 
 
 const PORT = process.env.PORT || 8090;
